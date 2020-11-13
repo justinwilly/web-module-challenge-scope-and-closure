@@ -184,3 +184,44 @@ console.log(hockeyGame); // increments by 1
 const football = game('football')
 console.log(football); // calls the football game and score independent of hockey
 
+
+
+
+///// CALLBACKS AND HIGHER ORDER FUNCTIONS /////
+// Higher Order Function receive other functions as parameters
+// Callback functions are passed into higher order functions as arguments
+// higher order functions are passed in
+// callback functions receive
+
+// in this case KITCHEN is our higher order function - our callback is going to be passed into chef
+const kitchen = function(i1, i2, chef) {
+    return chef(i1, i2)
+}
+
+const pizzaChef = function(i1, i2) {
+    return `I took ${i1} and I took ${i2} and I made you a pizza`
+}
+
+const pastaChef = function(i1, i2){
+    return `I took ${i1} and I took ${i2} and I made you a spaghetti`
+}
+
+console.log(kitchen('sauce', 'dough', pizzaChef))  // returns pizzaChef
+console.log(kitchen('sauce', 'dough', pastaChef))  // returns pastaChef
+
+
+
+// Higher order functions 
+function calculator(num1, num2, cb){
+    return cb(num1, num2)
+}
+// call back functions
+const add = (num1, num2) => num1 + num2;
+const subtract = (num1, num2) => num1 - num2;
+const multiply = (num1, num2) => num1 * num2;
+const divide = (num1, num2) => num1 / num2;
+
+console.log(calculator(5, 6, add)); // 11
+console.log(calculator(5, 6, subtract)); // -1
+console.log(calculator(5, 6, multiply)); // 30
+console.log(calculator(5, 6, divide)); // .833
