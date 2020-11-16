@@ -91,13 +91,21 @@ For example: invoking finalScore(inning, 9) might return this object:
 }
 */ 
 
-function finalScore(/*code Here*/){
+function finalScore(inningCB, numInnings){
 
-  /*Code Here*/
-
+  let homeScore = 0
+  let awayScore = 0
+  for(let i = 0; i < numInnings; i++) {
+    homeScore = homeScore + inningCB();
+    awayScore = awayScore + inningCB();
+  }
+  return {
+    Home: homeScore,
+    Away: awayScore
+  }
 }
 
-console.log()
+console.log(finalScore(inning, 9))
 
 /* Task 4: scoreboard()
 
@@ -108,10 +116,10 @@ Use the scoreboard function below to do the following:
   4. Return an array where each of it's index values equals a string stating the
   Home and Away team's scores for each inning (see example below)
   5. If there's a tie, add this message with the score to the end of the array: 
-     "This game will require extra innings: Away 12 - Home 12"  (see tie example below)
+      "This game will require extra innings: Away 12 - Home 12"  (see tie example below)
 
-     If there is no tie, add this message to the end of the array: 
-     "Final Score: Away 13 - Home 11"  (see no tie example below)
+      If there is no tie, add this message to the end of the array: 
+      "Final Score: Away 13 - Home 11"  (see no tie example below)
 
   HINT: `getInningScore` should be invoked by `scoreboard` and use `inning` to get and return the scores back to `scoreboard`
   
